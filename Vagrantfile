@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
 
     # "The devs said this broke something, so I disabled it!"
     #config.vm.provision "shell", inline: <<-SHELL
-    #  sudo umount /vagrant
+    #  sudo umount /provision
     #SHELL
 
 end

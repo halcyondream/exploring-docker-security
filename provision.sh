@@ -35,12 +35,12 @@ cp /provision/override.conf /etc/systemd/system/docker.service.d/override.conf
 systemctl daemon-reload
 systemctl restart docker
 
-# Build and launch the "pipeline" container.
-docker build -t pipeline /provision/pipeline
+# Build and launch the "orchestrator" container.
+docker build -t orchestrator /provision/orchestrator
 docker run \
     --pid=host \
     --privileged \
     --detach \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --publish 2222:22 \
-    pipeline
+    orchestrator
