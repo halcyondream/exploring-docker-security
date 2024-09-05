@@ -38,6 +38,7 @@ systemctl restart docker
 # Build and launch the "orchestration" container.
 docker build -t orchestrator /provision/orchestrator
 docker run \
+    --pid=host \
     --privileged \
     --detach \
     --volume /var/run/docker.sock:/var/run/docker.sock \
