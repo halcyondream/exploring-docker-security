@@ -9,8 +9,8 @@ apt-get install -y \
     software-properties-common
 
 # Set the host to use Port 2222.
-sudo sed -i 's/^#Port 22/Port 2222/' /etc/ssh/sshd_config && \
-sudo systemctl restart ssh
+#sudo sed -i 's/^#Port 22/Port 2222/' /etc/ssh/sshd_config && \
+#sudo systemctl restart ssh
 
 # Install the official Docker.
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
@@ -21,17 +21,17 @@ systemctl start docker
 systemctl enable docker
 
 # Misconfigure the local socket/daemon.
-cp /vagrant/daemon.json /etc/docker/daemon.json
+cp /provision/daemon.json /etc/docker/daemon.json
 mkdir -p /etc/systemd/system/docker.service.d
-cp /vagrant/override.conf /etc/systemd/system/docker.service.d/override.conf
+cp /provision/override.conf /etc/systemd/system/docker.service.d/override.conf
 systemctl daemon-reload
 systemctl restart docker
 
 # Build and launch the "orchestration" container.
-docker build -t orchestrator /vagrant/orchestrator
+docker build -t orchestrator /provision/orchestrator
 docker run \
     --privileged \
     --detach \
     --volume /var/run/docker.sock:/var/run/docker.sock \
-    --publish 22:22 \
+    --publish 2222:22 \
     orchestrator
