@@ -18,7 +18,7 @@ RUN curl -sSL https://get.docker.com/ | sh
 
 RUN useradd -m bob -s /bin/bash && \
 	mkdir -p /home/bob/.ssh && \
-	echo "bob:axYZhO6HFnP8aZeT6jCeKzFz58B28M!" | chpasswd && \
+	echo "bob:qwertyqwerty" | chpasswd && \
 	echo "Standard user successfully added"
 
 RUN echo "bob ALL=(ALL,!root) NOPASSWD: /bin/bash" >> /etc/sudoers && \
