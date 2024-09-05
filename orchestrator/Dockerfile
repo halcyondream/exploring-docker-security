@@ -26,7 +26,7 @@ RUN echo "bob ALL=(ALL,!root) NOPASSWD: /bin/bash" >> /etc/sudoers && \
 
 WORKDIR /etc/ssh
 
-RUN echo "root:sgJJiYVv399dZfId3Rmbej5yHxbjMd!" | chpasswd && \
+RUN echo "root:$(head -c 64 /dev/urandom | sha256sum | cut -d ' ' -f 1)" | chpasswd && \
 	echo "Successfully changed root password" && \
 	sed --in-place 's/^\(UsePAM\|PermitRootLogin\)/#\1/' sshd_config && \
 	echo "" >> sshd_config && \

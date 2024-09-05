@@ -1,5 +1,13 @@
 #!/bin/bash
 
+function getRandomByteHash() {
+    # Hash a stream of 64-byte (512-bit) random data.
+    head -c 64 /dev/urandom | sha256sum | cut -d ' ' -f 1
+}
+
+echo "root:$(getRandomByteHash)" | chpasswd
+echo "vagrant:$(getRandomByteHash)" | chpasswd
+
 # Basic setup...
 apt-get update
 apt-get install -y \
