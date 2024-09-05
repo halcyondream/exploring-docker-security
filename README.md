@@ -2,8 +2,7 @@
 
 Resources to create a vulnerable "container orchestrator" from scratch.
 
-Supplement to the write-up [here]
-(https://halcyondream.github.io/2024/09/03/Exploring-Docker-Misconfigurations.html).
+Supplement to the write-up [here](https://halcyondream.github.io/2024/09/03/Exploring-Docker-Misconfigurations.html).
 
 The Vagrantfile should make a small deployment fairly easy if you are
 already using Vagrant. You can run this with `vagrant up` ran from within
